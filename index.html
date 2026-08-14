@@ -1,7 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -9,18 +11,31 @@
 
     <title>MyLift Dashboard</title>
 
+    <!-- PWA MANIFEST -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- PWA THEME COLOR -->
+    <meta name="theme-color" content="#111827">
+
+    <!-- STYLESHEET -->
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- SIDEBAR -->
+
+    <!-- ========================================
+         SIDEBAR
+    ======================================== -->
 
     <aside class="sidebar">
 
         <div class="logo">
             MyLift
         </div>
+
 
         <nav>
 
@@ -46,6 +61,7 @@
 
         </nav>
 
+
         <div class="sidebar-bottom">
 
             <a href="#">
@@ -57,23 +73,32 @@
     </aside>
 
 
-    <!-- MAIN -->
+
+    <!-- ========================================
+         MAIN
+    ======================================== -->
 
     <main class="main">
 
-        <!-- TOP BAR -->
+
+        <!-- ========================================
+             TOP BAR
+        ======================================== -->
 
         <header class="topbar">
 
             <div>
 
-                <h1>Dashboard</h1>
+                <h1>
+                    Dashboard
+                </h1>
 
                 <p>
                     Welcome back to MyLift 👋
                 </p>
 
             </div>
+
 
             <div class="profile">
 
@@ -90,9 +115,13 @@
         </header>
 
 
-        <!-- STATS -->
+
+        <!-- ========================================
+             STATS
+        ======================================== -->
 
         <section class="stats-grid">
+
 
             <div class="stat-card">
 
@@ -113,6 +142,7 @@
                 </div>
 
             </div>
+
 
 
             <div class="stat-card">
@@ -136,6 +166,7 @@
             </div>
 
 
+
             <div class="stat-card">
 
                 <div class="stat-icon">
@@ -155,6 +186,7 @@
                 </div>
 
             </div>
+
 
 
             <div class="stat-card">
@@ -180,7 +212,10 @@
         </section>
 
 
-        <!-- DASHBOARD GRID -->
+
+        <!-- ========================================
+             DASHBOARD GRID
+        ======================================== -->
 
         <section class="dashboard-grid">
 
@@ -206,6 +241,7 @@
                 </div>
 
 
+
                 <!-- EXERCISE -->
 
                 <div class="exercise-input">
@@ -223,11 +259,12 @@
                 </div>
 
 
+
                 <!-- SETS -->
 
                 <div id="setsContainer">
-
                 </div>
+
 
 
                 <div class="set-buttons">
@@ -243,6 +280,7 @@
                 </div>
 
 
+
                 <button
                     class="primary-btn"
                     onclick="addWorkout()"
@@ -252,6 +290,7 @@
                 </button>
 
             </div>
+
 
 
             <!-- BODY WEIGHT -->
@@ -278,6 +317,7 @@
                 </div>
 
 
+
                 <div class="weight-display">
 
                     <span id="dashboardWeight">
@@ -291,6 +331,7 @@
                 </div>
 
 
+
                 <div class="weight-goal">
 
                     Goal:
@@ -302,11 +343,13 @@
                 </div>
 
 
+
                 <input
                     type="number"
                     id="newWeight"
                     placeholder="Enter weight"
                 >
+
 
 
                 <button
@@ -322,7 +365,10 @@
         </section>
 
 
-        <!-- RECENT WORKOUTS -->
+
+        <!-- ========================================
+             RECENT WORKOUTS
+        ======================================== -->
 
         <section class="card recent-card">
 
@@ -341,6 +387,7 @@
                 </div>
 
             </div>
+
 
 
             <div class="table-container">
@@ -376,11 +423,12 @@
                     </thead>
 
 
-                    <tbody id="workoutTable">
 
+                    <tbody id="workoutTable">
                     </tbody>
 
                 </table>
+
 
 
                 <div
@@ -395,7 +443,10 @@
         </section>
 
 
-        <!-- WORKOUT HISTORY -->
+
+        <!-- ========================================
+             WORKOUT HISTORY
+        ======================================== -->
 
         <section class="card recent-card">
 
@@ -416,12 +467,13 @@
             </div>
 
 
+
             <div
                 id="historyContainer"
                 class="history-container"
             >
-
             </div>
+
 
 
             <div
@@ -434,7 +486,10 @@
         </section>
 
 
-        <!-- PROGRESS -->
+
+        <!-- ========================================
+             PROGRESS
+        ======================================== -->
 
         <section
             class="card progress-card"
@@ -458,11 +513,14 @@
             </div>
 
 
+
             <div class="progress-controls">
 
                 <label>
                     Exercise
                 </label>
+
+
 
                 <select
                     id="progressExercise"
@@ -478,6 +536,7 @@
             </div>
 
 
+
             <div class="chart-container">
 
                 <canvas
@@ -485,6 +544,7 @@
                 ></canvas>
 
             </div>
+
 
 
             <div
@@ -497,7 +557,10 @@
         </section>
 
 
-        <!-- PERSONAL RECORDS -->
+
+        <!-- ========================================
+             PERSONAL RECORDS
+        ======================================== -->
 
         <section
             class="card personal-records-card"
@@ -521,6 +584,7 @@
             </div>
 
 
+
             <div
                 id="personalRecordsList"
                 class="personal-records-list"
@@ -534,10 +598,14 @@
 
         </section>
 
+
     </main>
 
 
-    <!-- EDIT WORKOUT MODAL -->
+
+    <!-- ========================================
+         EDIT WORKOUT MODAL
+    ======================================== -->
 
     <div
         id="editModal"
@@ -545,6 +613,7 @@
     >
 
         <div class="edit-modal-content">
+
 
             <div class="edit-modal-header">
 
@@ -560,6 +629,7 @@
 
                 </div>
 
+
                 <button
                     class="modal-close-btn"
                     onclick="closeEditModal()"
@@ -569,6 +639,7 @@
                 </button>
 
             </div>
+
 
 
             <div class="exercise-input">
@@ -586,11 +657,12 @@
             </div>
 
 
+
             <div
                 id="editSetsContainer"
             >
-
             </div>
+
 
 
             <div class="set-buttons">
@@ -606,6 +678,7 @@
             </div>
 
 
+
             <div class="modal-buttons">
 
                 <button
@@ -615,6 +688,7 @@
                 >
                     Cancel
                 </button>
+
 
                 <button
                     class="primary-btn"
@@ -631,17 +705,69 @@
     </div>
 
 
-    <!-- CHART.JS -->
+
+    <!-- ========================================
+         CHART.JS
+    ======================================== -->
 
     <script
         src="https://cdn.jsdelivr.net/npm/chart.js"
     ></script>
 
 
-    <!-- MYLIFT SCRIPT -->
+
+    <!-- ========================================
+         MYLIFT SCRIPT
+    ======================================== -->
 
     <script src="script.js"></script>
+
+
+
+    <!-- ========================================
+         SERVICE WORKER
+    ======================================== -->
+
+    <script>
+
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener(
+                "load",
+                function () {
+
+                    navigator.serviceWorker
+                        .register("./service-worker.js")
+                        .then(
+                            function (registration) {
+
+                                console.log(
+                                    "MyLift service worker registered:",
+                                    registration.scope
+                                );
+
+                            }
+                        )
+                        .catch(
+                            function (error) {
+
+                                console.error(
+                                    "MyLift service worker registration failed:",
+                                    error
+                                );
+
+                            }
+                        );
+
+                }
+            );
+
+        }
+
+    </script>
+
 
 </body>
 
 </html>
+```
