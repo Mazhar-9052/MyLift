@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MyLift Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            MyLift
+        </div>
+
+        <nav>
+
+            <a href="#" class="active">
+                🏠 Dashboard
+            </a>
+
+            <a href="#">
+                💪 Workouts
+            </a>
+
+            <a href="#bodyWeightSection">
+                ⚖️ Body Weight
+            </a>
+
+            <a href="#progressSection">
+                📊 Progress
+            </a>
+
+            <a href="#personalRecordsSection">
+                🏆 Personal Records
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#">
+                ⚙️ Settings
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Dashboard</h1>
+
+                <p>
+                    Welcome back to MyLift 👋
+                </p>
+
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-circle">
+                    M
+                </div>
+
+                <span>
+                    My Profile
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- STATS -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💪
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Workouts
+                    </p>
+
+                    <h2 id="totalWorkouts">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🔥
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Sets
+                    </p>
+
+                    <h2 id="totalSets">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⚖️
+                </div>
+
+                <div>
+
+                    <p>
+                        Current Weight
+                    </p>
+
+                    <h2 id="currentWeight">
+                        63 kg
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🏆
+                </div>
+
+                <div>
+
+                    <p>
+                        Personal Records
+                    </p>
+
+                    <h2 id="personalRecords">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DASHBOARD GRID -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- QUICK WORKOUT -->
+
+            <div class="card workout-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Quick Workout
+                        </h2>
+
+                        <p>
+                            Record your workout
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXERCISE -->
+
+                <div class="exercise-input">
+
+                    <label>
+                        Exercise
+                    </label>
+
+                    <input
+                        type="text"
+                        id="exercise"
+                        placeholder="Example: Bench Press"
+                    >
+
+                </div>
+
+
+                <!-- SETS -->
+
+                <div id="setsContainer">
+
+                </div>
+
+
+                <div class="set-buttons">
+
+                    <button
+                        class="add-set-btn"
+                        onclick="addSet()"
+                        type="button"
+                    >
+                        + Add Set
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="addWorkout()"
+                    type="button"
+                >
+                    + Add Workout
+                </button>
+
+            </div>
+
+
+            <!-- BODY WEIGHT -->
+
+            <div
+                class="card"
+                id="bodyWeightSection"
+            >
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Body Weight
+                        </h2>
+
+                        <p>
+                            Track your current weight
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="weight-display">
+
+                    <span id="dashboardWeight">
+                        63
+                    </span>
+
+                    <small>
+                        kg
+                    </small>
+
+                </div>
+
+
+                <div class="weight-goal">
+
+                    Goal:
+
+                    <strong>
+                        70 kg
+                    </strong>
+
+                </div>
+
+
+                <input
+                    type="number"
+                    id="newWeight"
+                    placeholder="Enter weight"
+                >
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="updateWeight()"
+                    type="button"
+                >
+                    Update Weight
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECENT WORKOUTS -->
+
+        <section class="card recent-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Recent Workouts
+                    </h2>
+
+                    <p>
+                        Your latest training sessions
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Exercise
+                            </th>
+
+                            <th>
+                                Set
+                            </th>
+
+                            <th>
+                                Weight
+                            </th>
+
+                            <th>
+                                Reps
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="workoutTable">
+
+                    </tbody>
+
+                </table>
+
+
+                <div
+                    id="emptyMessage"
+                    class="empty-message"
+                >
+                    No workouts recorded yet.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WORKOUT HISTORY -->
+
+        <section class="card recent-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Workout History
+                    </h2>
+
+                    <p>
+                        Complete history of your workouts
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="historyContainer"
+                class="history-container"
+            >
+
+            </div>
+
+
+            <div
+                id="historyEmpty"
+                class="empty-message"
+            >
+                No workout history yet.
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+
+        <section
+            class="card progress-card"
+            id="progressSection"
+        >
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Training Progress
+                    </h2>
+
+                    <p>
+                        Track your strength over time
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="progress-controls">
+
+                <label>
+                    Exercise
+                </label>
+
+                <select
+                    id="progressExercise"
+                    onchange="drawProgressChart()"
+                >
+
+                    <option value="">
+                        Select Exercise
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="chart-container">
+
+                <canvas
+                    id="progressChart"
+                ></canvas>
+
+            </div>
+
+
+            <div
+                id="progressSummary"
+                class="progress-summary"
+            >
+                Start recording workouts to see your progress.
+            </div>
+
+        </section>
+
+
+        <!-- PERSONAL RECORDS -->
+
+        <section
+            class="card personal-records-card"
+            id="personalRecordsSection"
+        >
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        🏆 Personal Records
+                    </h2>
+
+                    <p>
+                        Your best weight for each exercise
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="personalRecordsList"
+                class="personal-records-list"
+            >
+
+                <div class="empty-message">
+                    Start recording workouts to see your personal records.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- EDIT WORKOUT MODAL -->
+
+    <div
+        id="editModal"
+        class="edit-modal"
+    >
+
+        <div class="edit-modal-content">
+
+            <div class="edit-modal-header">
+
+                <div>
+
+                    <h2>
+                        Edit Workout
+                    </h2>
+
+                    <p>
+                        Update your workout details
+                    </p>
+
+                </div>
+
+                <button
+                    class="modal-close-btn"
+                    onclick="closeEditModal()"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="exercise-input">
+
+                <label>
+                    Exercise
+                </label>
+
+                <input
+                    type="text"
+                    id="editExercise"
+                    placeholder="Exercise name"
+                >
+
+            </div>
+
+
+            <div
+                id="editSetsContainer"
+            >
+
+            </div>
+
+
+            <div class="set-buttons">
+
+                <button
+                    class="add-set-btn"
+                    onclick="addEditSet()"
+                    type="button"
+                >
+                    + Add Set
+                </button>
+
+            </div>
+
+
+            <div class="modal-buttons">
+
+                <button
+                    class="secondary-btn modal-cancel-btn"
+                    onclick="closeEditModal()"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="saveEditedWorkout()"
+                    type="button"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHART.JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+
+    <!-- MYLIFT SCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
