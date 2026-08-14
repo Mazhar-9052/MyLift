@@ -1,11 +1,13 @@
-const CACHE_NAME = "mylift-v1";
+const CACHE_NAME = "mylift-v2";
 
 const FILES_TO_CACHE = [
     "./",
     "./index.html",
     "./style.css",
     "./script.js",
-    "./manifest.json"
+    "./manifest.json",
+    "./icon-192.png",
+    "./icon-512.png"
 ];
 
 
@@ -67,6 +69,8 @@ self.addEventListener(
 
                                     }
 
+                                    return null;
+
                                 }
                             )
 
@@ -93,23 +97,24 @@ self.addEventListener(
 
         event.respondWith(
 
-            caches.match(event.request)
-                .then(
-                    function (cachedResponse) {
+            caches.match(
+                event.request
+            )
+            .then(
+                function (cachedResponse) {
 
-                        if (cachedResponse) {
+                    if (cachedResponse) {
 
-                            return cachedResponse;
-
-                        }
-
-
-                        return fetch(
-                            event.request
-                        );
+                        return cachedResponse;
 
                     }
-                )
+
+                    return fetch(
+                        event.request
+                    );
+
+                }
+            )
 
         );
 
